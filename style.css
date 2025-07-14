@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #DF974C;
+    --secondary-color: #D8D9DB;
+
+}
+
+.secondary-color {
+    background-color: var(--secondary-color);
+}
+
+body {
+    font-family: monospace;
+
+}
+
+header {
+    overflow: hidden;
+}
+
+h1 {
+
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--main-color);
+    margin-block: 2rem;
+    padding: 1rem;
+}
+
+.main-section {
+    min-height: 100dvh;
+    padding: 1rem;
+
+
+}
+
+.calc-container {
+    background-color: black;
+    margin: auto;
+    border-radius: 10px;
+
+
+}
+
+.calc-result {
+    background-color: transparent;
+    color: white;
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: right;
+
+}
+
+.calc-btns {
+    display: grid;
+    grid-template-areas: "btn-clear btn-clear backspace-btn btn-division"
+        "btn-7 btn-8 btn-9 btn-x"
+        "btn-4 btn-5 btn-6 btn-dash"
+        "btn-1 btn-2 btn-3 btn-plus"
+        "btn-0 btn-0 btn-0 btn-equal"
+    ;
+    gap: 2px;
+
+
+}
+
+.calc-btns button {
+    font-size: 2rem;
+    padding: 5px;
+    font-weight: bold;
+    border: transparent;
+    cursor: pointer;
+}
+
+.btn-0 {
+    grid-area: btn-0;
+    border-bottom-left-radius: 10px;
+
+}
+
+.btn-1 {
+    grid-area: btn-1;
+}
+
+.btn-2 {
+    grid-area: btn-2;
+}
+
+.btn-3 {
+    grid-area: btn-3;
+}
+
+.btn-4 {
+    grid-area: btn-4;
+}
+
+.btn-5 {
+    grid-area: btn-5;
+}
+
+.btn-6 {
+    grid-area: btn-6;
+}
+
+.btn-7 {
+    grid-area: btn-7;
+}
+
+.btn-8 {
+    grid-area: btn-8;
+}
+
+.btn-9 {
+    grid-area: btn-9;
+}
+
+.btn-x {
+    grid-area: btn-x;
+}
+
+
+.btn-plus,
+.btn-dash,
+.btn-x,
+.btn-division,
+.btn-equal {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.btn-equal {
+    grid-area: btn-equal;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-plus {
+    grid-area: btn-plus;
+
+}
+
+.btn-dash {
+    grid-area: btn-dash;
+}
+
+.btn-division {
+    grid-area: btn-division;
+}
+
+.backspace-btn {
+    grid-area: backspace-btn;
+}
+
+.btn-clear {
+    grid-area: btn-clear;
+}
+
+@media (min-width:767.98px) {
+
+    .calc-container {
+        width: 50%;
+
+    }
+
+    .calc-btns button {
+        padding: 1.5rem 2rem;
+
+    }
+
+
+}
+
+@media (min-width:1023.98px) {
+    .calc-container {
+        width: 25%;
+
+    }
+
+    .calc-btns button {
+
+        padding: 16px 5px;
+
+    }
+}
