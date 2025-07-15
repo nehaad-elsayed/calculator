@@ -17,26 +17,46 @@
     </header>
     <main>
       <section class="main-section">
-        <div class="calc-container">
-          <div class="calc-result" id="displayResult">0</div>
+        <div class="calc-container" role="region" aria-label="Calculator">
+          <div
+            class="calc-result"
+            id="displayResult"
+            role="status"
+            aria-live="polite"
+          >
+            0
+          </div>
           <div class="calc-btns">
-            <button class="btn-clear secondary-color">C</button>
-            <button class="backspace-btn secondary-color">←</button>
-            <button class="btn-division">÷</button>
-            <button class="btn-7 secondary-color">7</button>
-            <button class="btn-8 secondary-color">8</button>
-            <button class="btn-9 secondary-color">9</button>
-            <button class="btn-x">×</button>
-            <button class="btn-dash">-</button>
-            <button class="btn-4 secondary-color">4</button>
-            <button class="btn-5 secondary-color">5</button>
-            <button class="btn-6 secondary-color">6</button>
-            <button class="btn-1 secondary-color">1</button>
-            <button class="btn-2 secondary-color">2</button>
-            <button class="btn-3 secondary-color">3</button>
-            <button class="btn-plus">+</button>
-            <button class="btn-0 secondary-color">0</button>
-            <button class="btn-equal secondary-color" id="btnEqual">=</button>
+            <button class="btn-clear secondary-color" aria-label="Clear">
+              C
+            </button>
+            <button
+              class="backspace-btn secondary-color"
+              aria-label="Backspace"
+            >
+              ←
+            </button>
+            <button class="btn-division" aria-label="Divide">÷</button>
+            <button class="btn-7 secondary-color" aria-label="7">7</button>
+            <button class="btn-8 secondary-color" aria-label="8">8</button>
+            <button class="btn-9 secondary-color" aria-label="9">9</button>
+            <button class="btn-x" aria-label="Multiply">×</button>
+            <button class="btn-dash" aria-label="Subtract">-</button>
+            <button class="btn-4 secondary-color" aria-label="4">4</button>
+            <button class="btn-5 secondary-color" aria-label="5">5</button>
+            <button class="btn-6 secondary-color" aria-label="6">6</button>
+            <button class="btn-1 secondary-color" aria-label="1">1</button>
+            <button class="btn-2 secondary-color" aria-label="2">2</button>
+            <button class="btn-3 secondary-color" aria-label="3">3</button>
+            <button class="btn-plus" aria-label="Add">+</button>
+            <button class="btn-0 secondary-color" aria-label="0">0</button>
+            <button
+              class="btn-equal secondary-color"
+              id="btnEqual"
+              aria-label="Equals"
+            >
+              =
+            </button>
           </div>
         </div>
       </section>
