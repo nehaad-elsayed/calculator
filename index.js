@@ -3,14 +3,15 @@
 const screen = document.getElementById("displayResult");
 const calcBtns = document.querySelector(".calc-btns");
 const btnEqual = document.getElementById("btnEqual");
-let currentNumber = "";
-let totalValue = 0;
+let currentNumber = "0";
+let previousNum = 0;
 let prevOperator;
 
 // //* Events ***********************//
 
 calcBtns.addEventListener("click", (e) => {
-  let number = e.target.textContent;
+  if (e.target.tagName !== "BUTTON") return;
+  let number = e.target.textContent.trim(); 
   buttonClick(number);
 });
 
@@ -22,62 +23,63 @@ function buttonClick(value) {
   } else {
     handleNumber(value);
   }
-  updateScreen(); // عشان اعرض الرقم اللي هيكون في الشاشة اللي نتج من الداله handle number
+  updateScreen();
 }
 
 function handleMath(value) {
-  if (currentNumber === 0) {
+  if (currentNumber === "0") {
     return;
   }
 
   const intCurrentNumber = parseInt(currentNumber);
-  if (totalValue === 0) {
-    totalValue = intCurrentNumber;
+  if (previousNum === 0) {
+    previousNum = intCurrentNumber;
   } else {
     excuteOperation(intCurrentNumber);
   }
-
   prevOperator = value;
   currentNumber = "0";
-  console.log(totalValue);
 }
 
 function excuteOperation(intCurrentNumber) {
   if (prevOperator === "+") {
-    totalValue += intCurrentNumber;
+    previousNum += intCurrentNumber;
   } else if (prevOperator === "-") {
-    totalValue -= intCurrentNumber;
+    previousNum -= intCurrentNumber;
   } else if (prevOperator === "×") {
-    totalValue *= intCurrentNumber;
+    previousNum *= intCurrentNumber;
   } else if (prevOperator === "÷") {
-    totalValue /= intCurrentNumber;
+    if (intCurrentNumber === 0) {
+      previousNum = "error"; 
+    } else {
+      previousNum /= intCurrentNumber;
+    }
   }
 }
 function handleNumber(number) {
-  if (currentNumber == 0) {
+  if (currentNumber === "0") {
     currentNumber = number;
   } else {
     currentNumber += number;
   }
-  //   displayResult.textContent = currentNumber;
 }
 
 function handleSymbols(symbol) {
   switch (symbol) {
     case "C":
-      currentNumber = 0;
+      currentNumber = "0";
+      previousNum = 0;
+      prevOperator = null;
       break;
     case "←":
-      if (currentNumber === 0) {
+      if (currentNumber === "0") {
         return;
       }
       if (currentNumber.length === 1) {
-        currentNumber = 0;
+        currentNumber = "0";
       } else {
         currentNumber = currentNumber.slice(0, -1);
-        // عندي طريقتين ارجع بيهم خطوه واقص التكست => currentNumber = currentNumber.substring(0, currentNumber.length - 1);
       }
-
       break;
 
     case "÷":
@@ -89,11 +91,18 @@ function handleSymbols(symbol) {
     case "=":
       if (prevOperator === null) {
         return;
+      } else {
+        excuteOperation(parseInt(currentNumber));
+        prevOperator = null;
+        if (typeof previousNum === "string") {
+          currentNumber = previousNum;
+          previousNum = 0;
+        } else {
+          currentNumber = previousNum.toString();
+          previousNum = 0;
+        }
+        updateScreen(); 
       }
-      excuteOperation(parseInt(currentNumber));
-      prevOperator = null;
-      currentNumber = totalValue.toString();
-      totalValue = 0;
       break;
   }
 }
